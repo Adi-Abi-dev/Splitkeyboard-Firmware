@@ -1,30 +1,44 @@
 [keyboard]
-name = "split_keyboard"
-product_name = "Split Keyboard"
+name = "Knaeckebrot"
+product_name = "Knaeckebrot"
 vendor_id = 0x4c4b
 product_id = 0x4643
 manufacturer = "RMK"
 chip = "nrf52840"
 
 [layout]
-rows = 5
-cols = 14
+rows = 10
+cols = 7
 layers = 2
 keymap = [
     [
-        ["Esc", "1", "2", "3", "4", "5", "6", "6", "7", "8", "9", "0", "Minus", "Equal"],
-        ["Tab", "Q", "W", "E", "R", "T", "Y", "Y", "U", "I", "O", "P", "LeftBracket", "RightBracket"],
-        ["LShift", "A", "S", "D", "F", "G", "H", "H", "J", "K", "L", "Semicolon", "Quote", "Backslash"],
-        ["LCtrl", "Z", "X", "C", "V", "B", "N", "N", "M", "Comma", "Dot", "Slash", "RShift", "RCtrl"],
-        ["LGui", "LAlt", "Space", "MO(1)", "Enter", "Backspace", "Delete", "Delete", "Backspace", "Enter", "MO(1)", "Space", "RAlt", "RGui"]
+        # --- LINKS (Reihe 0-4) ---
+        ["Esc", "1", "2", "3", "4", "5", "6"],           # R0: 7 Tasten
+        ["Tab", "Q", "W", "E", "R", "T", "G"],           # R1: 7 Tasten
+        ["LShift", "A", "S", "D", "F", "G", "H"],        # R2: 7 Tasten
+        ["LCtrl", "Z", "X", "C", "V", "B", "_"],         # R3: Start Col 1 (6 Tasten), B am Ende
+        ["_", "_", "_", "_", "leftgui", "leftalt", "spc"],   # R4: Start Col 0 (3 Tasten)
+
+        # --- RECHTS (Reihe 5-9) ---
+        ["7", "8", "9", "0", "Minus", "Equal", "Grave"], # R5: 7 Tasten
+        ["Y", "U", "I", "O", "P", "LeftBracket", "RightBracket"], # R6: 7 Tasten
+        ["H", "J", "K", "L", "Semicolon", "Quote", "Backslash"], # R7: 7 Tasten
+        ["_", "N", "M", "Comma", "Dot", "Slash", "RShift"], # R8: Start Col 1 (6 Tasten), N am Ende
+        ["Backspace", "Enter", "nonus_hash", "_", "_", "_", "_"] # R9: Start Col 0 (3 Tasten)
     ],
     [
-        ["Grave", "F1", "F2", "F3", "F4", "F5", "F6", "F6", "F7", "F8", "F9", "F10", "F11", "F12"],
-        ["_", "_", "Up", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"],
-        ["_", "Left", "Down", "Right", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"],
-        ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"],
-        ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"]
-    ],
+        # --- LAYER 1 (Placeholder) ---
+        ["_", "_", "_", "_", "_", "_", "_"],
+        ["_", "_", "_", "_", "_", "_", "_"],
+        ["_", "_", "_", "_", "_", "_", "_"],
+        ["_", "_", "_", "_", "_", "_", "_"],
+        ["_", "_", "_", "_", "_", "_", "_"],
+        ["_", "_", "_", "_", "_", "_", "_"],
+        ["_", "_", "_", "_", "_", "_", "_"],
+        ["_", "_", "_", "_", "_", "_", "_"],
+        ["_", "_", "_", "_", "_", "_", "_"],
+        ["_", "_", "_", "_", "_", "_", "_"]
+    ]
 ]
 
 [ble]
@@ -42,20 +56,16 @@ col_offset = 0
 [split.central.matrix]
 row_pins = ["P0_31", "P0_29", "P0_02", "P1_15", "P1_13"]
 col_pins = ["P1_00", "P0_11", "P1_04", "P1_06", "P0_09", "P0_10", "P1_11"]
-# RMK uses col2row as the default matrix diode direction, if you want to use a row2col matrix, add `row2col = true`
-# row2col = true
 
 [[split.peripheral]]
 rows = 5
 cols = 7
-row_offset = 0
-col_offset = 7
+row_offset = 5
+col_offset = 0
 
 [split.peripheral.matrix]
 row_pins = ["P0_17", "P0_20", "P0_22", "P0_24", "P1_00"]
 col_pins = ["P0_11", "P1_04", "P1_06", "P0_09", "P0_10", "P1_11", "P1_13"]
-# RMK uses col2row as the default matrix diode direction, if you want to use a row2col matrix, add `row2col = true`
-# row2col = true
 
 [rmk]
 split_peripherals_num = 1
